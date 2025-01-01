@@ -3,7 +3,13 @@
     clickable
     tag="a"
     target="_blank"
-    :href="props.link"
+    @click="
+        $router
+          .push({
+            name: props.route,
+            params: props.params,
+            query: props.query,
+          }).catch((err) => {})"
   >
     <q-item-section
       v-if="props.icon"
@@ -37,6 +43,10 @@ const props = defineProps({
   },
 
   icon: {
+    type: String,
+    default: ''
+  },
+  route:{
     type: String,
     default: ''
   }
