@@ -11,6 +11,10 @@ const routes = [
       { path: '/category', component: () => import('pages/category/index.vue'), name: 'Category' },
       { path: '/category/add', component: () => import('pages/category/add.vue'),  name: 'CategoryAdd' },
       { path: '/category/:id', component: () => import('pages/category/edit.vue'), name: 'CategoryEdit' },
+
+      { path: '/course', component: () => import('pages/course/index.vue'), name: 'Course' },
+      { path: '/course/add', component: () => import('pages/course/add.vue'),  name: 'CourseAdd' },
+      { path: '/course/:id', component: () => import('pages/course/edit.vue'), name: 'CourseEdit' },
     ]
   },
 
