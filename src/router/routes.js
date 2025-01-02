@@ -15,6 +15,10 @@ const routes = [
       { path: '/course', component: () => import('pages/course/index.vue'), name: 'Course' },
       { path: '/course/add', component: () => import('pages/course/add.vue'),  name: 'CourseAdd' },
       { path: '/course/:id', component: () => import('pages/course/edit.vue'), name: 'CourseEdit' },
+
+      { path: '/student', component: () => import('pages/student/index.vue'), name: 'Student' },
+      { path: '/student/add', component: () => import('pages/student/add.vue'),  name: 'StudentAdd' },
+      { path: '/student/:id', component: () => import('pages/student/edit.vue'), name: 'StudentEdit' },
     ]
   },
 
