@@ -15,7 +15,30 @@
           Reception Management System
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <!-- <div class="cursor-pointer">{{  }}</div> -->
+
+        <q-btn-dropdown color="black" :label="profileData?.user?.name" >
+          <q-list>
+            <q-item clickable v-close-popup @click="logout()" class="cursor-pointer">
+              <q-item-section>
+                <q-item-label>Logout</q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <!-- <q-item clickable v-close-popup @click="onItemClick">
+              <q-item-section>
+                <q-item-label>Videos</q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-close-popup @click="onItemClick">
+              <q-item-section>
+                <q-item-label>Articles</q-item-label>
+              </q-item-section>
+            </q-item> -->
+          </q-list>
+        </q-btn-dropdown>
+
       </q-toolbar>
     </q-header>
 
@@ -46,8 +69,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import EssentialLink from 'components/EssentialLink.vue'
+import { api } from 'src/boot/axios'
+import { useRoute, useRouter } from 'vue-router'
 
 const linksList = [
   {
@@ -99,9 +124,54 @@ const linksList = [
   // }
 ]
 
+const $router  = useRouter();
+
 const leftDrawerOpen = ref(false)
 
 function toggleLeftDrawer () {
   leftDrawerOpen.value = !leftDrawerOpen.value
 }
+
+onMounted(() => {
+  profile()
+})
+
+const profileData = ref('');
+
+const profile = () => {
+
+  api
+    .get(process.env.VITE_API_URL + 'profile',{
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+    })
+    .then((res) => {
+      profileData.value = res.data;
+    console.log(res,'response')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+    .finally(() => {})
+}
+
+const logout = () => {
+  api
+    .post(`${process.env.VITE_API_URL}logout`, null, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
+    .then((res) => {
+      // Clear the token from local storage
+      localStorage.removeItem('token');
+
+      // Redirect to the login page
+      $router.push('/login');
+    })
+    .catch((err) => {
+      console.error('Logout failed:', err);
+    });
+};
 </script>

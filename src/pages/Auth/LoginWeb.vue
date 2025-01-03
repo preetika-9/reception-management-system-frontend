@@ -37,6 +37,9 @@
 <script setup>
 import { api } from 'src/boot/axios'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router';
+
+const $router = useRouter()
 
 const form = ref({
   mobile_number: '',
@@ -48,7 +51,13 @@ const login = () => {
   api
     .post(process.env.VITE_API_URL + 'login', form.value)
     .then((res) => {
-      console.log(res, 'response')
+      console.log(res.data.access_token, 'response')
+      const token = res?.data?.access_token;
+      localStorage.setItem('token', token);
+     if(token){
+      console.log(token,'token')
+      $router.push('/');
+     }
     })
     .catch((err) => {
       console.log(err)
