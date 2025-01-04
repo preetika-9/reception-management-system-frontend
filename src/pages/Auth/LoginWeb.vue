@@ -1,7 +1,9 @@
 <template>
-  <h1 class="p-10">Login</h1>
+  <div  class="flex justify-center">
+    <div style="width: 500px">
+    <h1 class="p-10">Login</h1>
 
-  <div class="q-pa-md" style="max-width: 400px">
+  <div class="q-pa-md" >
     <q-form @submit="login" @reset="onReset" class="q-gutter-md">
       <q-input
         ref="username"
@@ -32,6 +34,8 @@
         <q-btn label="Submit" type="submit" color="primary" />
       </div>
     </q-form>
+  </div>
+  </div>
   </div>
 </template>
 <script setup>

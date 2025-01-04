@@ -17,7 +17,7 @@
 
         <!-- <div class="cursor-pointer">{{  }}</div> -->
 
-        <q-btn-dropdown color="black" :label="profileData?.user?.name" >
+        <q-btn-dropdown color="white" flat :label="profileData?.user?.name" >
           <q-list>
             <q-item clickable v-close-popup @click="logout()" class="cursor-pointer">
               <q-item-section>
@@ -96,20 +96,20 @@ const linksList = [
     link: 'https://chat.quasar.dev',
     route: 'Student',
   },
-  {
-    title: 'Permission',
-    // caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev',
-    route: 'Permission',
-  },
-  {
-    title: 'Roles',
-    // caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev',
-    route: 'Role',
-  },
+ // {
+   //  title: 'Permission',
+   //  // caption: 'forum.quasar.dev',
+   //  icon: 'record_voice_over',
+   //  link: 'https://forum.quasar.dev',
+   //  route: 'Permission',
+   //},
+   //{
+   //  title: 'Roles',
+   //  // caption: '@quasarframework',
+   //  icon: 'rss_feed',
+   //  link: 'https://twitter.quasar.dev',
+   //  route: 'Role',
+   //},
   // {
   //   title: 'Facebook',
   //   caption: '@QuasarFramework',
