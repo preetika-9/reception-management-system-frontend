@@ -2,7 +2,7 @@
 
   <div class="flex q-pa-md tw-gap-3 tw-items-center tw-justify-between">
     <div class="flex tw-gap-3 tw-items-center">
-      <q-btn @click="goBack()" color="grey-3" unelevated class="text-black" round icon="mdi-arrow-left"></q-btn>
+      <div class="flex items-center"><q-btn @click="goBack()" color="grey-3" unelevated class="text-black" round icon="mdi-arrow-left"></q-btn></div>
       <h6 class="tw-text-2xl">Add {{title}}</h6>
     </div>
   </div>
