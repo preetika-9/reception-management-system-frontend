@@ -21,6 +21,7 @@
               type="text"
               dense
               class="rounded-lg"
+               @input="onMobileInput"
             />
 
             <q-input
@@ -91,6 +92,11 @@ const login = () => {
 const toggleShowPassword = () => {
   showPassword.value = !showPassword.value
 }
+
+const onMobileInput = (e) => {
+  form.value.mobile_number = e.target.value.replace(/\D/g, '').slice(0, 10)
+}
+
 </script>
 
 <style scoped>
